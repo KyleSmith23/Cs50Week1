@@ -111,25 +111,31 @@ do
 } while (creditCardNumber <= 0);
 
 long workingCCNum = creditCardNumber;
+int lastDigit;
 int sum1 = 0;
 
 while (workingCCNum > 0)
 {
-    sum1 += workingCCNum % 10;
+    lastDigit = Convert.ToInt32(workingCCNum % 10);
+    sum1 = sum1 + lastDigit;
     workingCCNum = workingCCNum / 100;
+    
 }
 
 workingCCNum = creditCardNumber;
-long sum2 = 0;
+int lastDigDble;
+int sum2 = 0;
 
 while (workingCCNum > 0)
 {
     workingCCNum = workingCCNum / 10;
-    sum2 = workingCCNum % 10;
-    sum2 = sum2 * 2;
-    sum2 += (sum2 % 10) + (sum2 / 10);
+    lastDigit = Convert.ToInt32(workingCCNum % 10);
+    lastDigDble = lastDigit * 2;
+    sum2 += (lastDigDble % 10) + (lastDigDble / 10);
+    workingCCNum = workingCCNum / 10;
+    
 }
 
-long sum3 = (sum1 + sum2) % 10;
+int sum3 = (sum1 + sum2) % 10;
 
 Console.WriteLine(sum3);
