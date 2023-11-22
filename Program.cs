@@ -32,12 +32,10 @@ while (false) {
 */
 // Cash Challenge - Greedy algorithm 
 
-
-int change = 0;
-
-
+/*
 while (true)
 {
+    int change = 0;
     int coins = 0;
     int quarter = 0;
     int dime = 0;
@@ -100,3 +98,38 @@ while (true)
         $"\n{penny} Penny");
     
 }
+*/
+
+// Credit Challenge
+long creditCardNumber;
+
+do
+{
+    Console.Write("Enter card number");
+    creditCardNumber = Convert.ToInt64((Console.ReadLine()));
+
+} while (creditCardNumber <= 0);
+
+long workingCCNum = creditCardNumber;
+int sum1 = 0;
+
+while (workingCCNum > 0)
+{
+    sum1 += workingCCNum % 10;
+    workingCCNum = workingCCNum / 100;
+}
+
+workingCCNum = creditCardNumber;
+long sum2 = 0;
+
+while (workingCCNum > 0)
+{
+    workingCCNum = workingCCNum / 10;
+    sum2 = workingCCNum % 10;
+    sum2 = sum2 * 2;
+    sum2 += (sum2 % 10) + (sum2 / 10);
+}
+
+long sum3 = (sum1 + sum2) % 10;
+
+Console.WriteLine(sum3);
